@@ -1,0 +1,35 @@
+identity:
+  name: get_post_details
+  author: r3-yamauchi
+  label:
+    en_US: Get Post Details
+    ja_JP: 投稿詳細取得
+    zh_Hans: 获取文章详情
+  icon: icon.svg
+description:
+  human:
+    en_US: Retrieve detailed information about a specific WordPress post by its ID.
+    ja_JP: 投稿IDを指定してWordPressサイトから投稿の詳細情報を取得します。
+    zh_Hans: 通过文章ID从WordPress站点检索特定文章的详细信息。
+  llm: Retrieve detailed information about a specific WordPress post by ID.
+parameters:
+  - name: post_id
+    type: number
+    required: true
+    label:
+      en_US: Post ID
+      ja_JP: 投稿ID
+      zh_Hans: 文章ID
+    human_description:
+      en_US: "The ID of the post to retrieve (required)."
+      ja_JP: "取得する投稿のID（必須）。"
+      zh_Hans: "要检索的文章ID（必需）。"
+    llm_description: The ID of the post to retrieve.
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+extra:
+  python:
+    source: tools/get_post_details.py
+

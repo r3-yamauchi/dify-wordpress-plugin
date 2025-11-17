@@ -1,0 +1,89 @@
+identity:
+  name: create_comment
+  author: r3-yamauchi
+  label:
+    en_US: Create Comment
+    ja_JP: コメント作成
+    zh_Hans: 创建评论
+  icon: icon.svg
+description:
+  human:
+    en_US: Create a new comment on a WordPress post with content and optional author information.
+    ja_JP: WordPress投稿に新しいコメントを作成します。内容、オプションで投稿者情報を指定できます。
+    zh_Hans: 在WordPress文章上创建新评论，包含内容和可选的作者信息。
+  llm: Create a new comment on a WordPress post.
+parameters:
+  - name: post_id
+    type: number
+    required: true
+    label:
+      en_US: Post ID
+      ja_JP: 投稿ID
+      zh_Hans: 文章ID
+    human_description:
+      en_US: "The ID of the post to comment on (required)."
+      ja_JP: "コメントを投稿する投稿のID（必須）。"
+      zh_Hans: "要评论的文章ID（必需）。"
+    llm_description: The ID of the post to comment on.
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+  - name: content
+    type: string
+    required: true
+    label:
+      en_US: Comment Content
+      ja_JP: コメント内容
+      zh_Hans: 评论内容
+    human_description:
+      en_US: Comment content (required).
+      ja_JP: コメント内容（必須）。
+      zh_Hans: 评论内容（必需）。
+    llm_description: Comment content (required).
+    form: llm
+  - name: author_name
+    type: string
+    required: false
+    label:
+      en_US: Author Name
+      ja_JP: 投稿者名
+      zh_Hans: 作者名称
+    human_description:
+      en_US: Comment author name.
+      ja_JP: コメント投稿者名。
+      zh_Hans: 评论作者名称。
+    llm_description: Comment author name.
+    form: llm
+  - name: author_email
+    type: string
+    required: false
+    label:
+      en_US: Author Email
+      ja_JP: 投稿者メールアドレス
+      zh_Hans: 作者电子邮件
+    human_description:
+      en_US: Comment author email address.
+      ja_JP: コメント投稿者のメールアドレス。
+      zh_Hans: 评论作者电子邮件地址。
+    llm_description: Comment author email address.
+    form: llm
+  - name: parent
+    type: number
+    required: false
+    label:
+      en_US: Parent Comment ID
+      ja_JP: 親コメントID
+      zh_Hans: 父评论ID
+    human_description:
+      en_US: Parent comment ID to create a reply comment.
+      ja_JP: 返信コメントを作成するための親コメントID。
+      zh_Hans: 创建回复评论的父评论ID。
+    llm_description: Parent comment ID for reply comment.
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+extra:
+  python:
+    source: tools/create_comment.py

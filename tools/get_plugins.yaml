@@ -1,0 +1,19 @@
+identity:
+  name: get_plugins
+  author: r3-yamauchi
+  label:
+    en_US: Get Plugins
+    ja_JP: プラグイン取得
+    zh_Hans: 获取插件
+  icon: icon.svg
+description:
+  human:
+    en_US: Retrieve information about installed plugins on the WordPress site.
+    ja_JP: WordPressサイトにインストールされているプラグインの情報を取得します。
+    zh_Hans: 检索WordPress站点上已安装插件的信息。
+  llm: Retrieve information about installed plugins on the WordPress site.
+parameters: []
+extra:
+  python:
+    source: tools/get_plugins.py
+

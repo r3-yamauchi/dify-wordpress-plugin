@@ -1,0 +1,57 @@
+identity:
+  name: create_tag
+  author: r3-yamauchi
+  label:
+    en_US: Create Tag
+    ja_JP: タグ作成
+    zh_Hans: 创建标签
+  icon: icon.svg
+description:
+  human:
+    en_US: Create a new tag in WordPress with name and optional description and slug.
+    ja_JP: WordPressに新しいタグを作成します。名前、オプションで説明、スラッグを指定できます。
+    zh_Hans: 在WordPress中创建新标签，包含名称和可选的描述和别名。
+  llm: Create a new tag in WordPress.
+parameters:
+  - name: name
+    type: string
+    required: true
+    label:
+      en_US: Tag Name
+      ja_JP: タグ名
+      zh_Hans: 标签名称
+    human_description:
+      en_US: Tag name (required).
+      ja_JP: タグ名（必須）。
+      zh_Hans: 标签名称（必需）。
+    llm_description: Tag name (required).
+    form: llm
+  - name: description
+    type: string
+    required: false
+    label:
+      en_US: Description
+      ja_JP: 説明
+      zh_Hans: 描述
+    human_description:
+      en_US: Tag description.
+      ja_JP: タグの説明。
+      zh_Hans: 标签描述。
+    llm_description: Tag description.
+    form: llm
+  - name: slug
+    type: string
+    required: false
+    label:
+      en_US: Slug
+      ja_JP: スラッグ
+      zh_Hans: 别名
+    human_description:
+      en_US: Tag slug (URL-friendly name). If not provided, WordPress will generate one from the name.
+      ja_JP: タグのスラッグ（URLに適した名前）。指定しない場合、WordPressが名前から自動生成します。
+      zh_Hans: 标签别名（URL友好的名称）。如果未提供，WordPress将从名称自动生成。
+    llm_description: Tag slug.
+    form: llm
+extra:
+  python:
+    source: tools/create_tag.py

@@ -1,0 +1,19 @@
+identity:
+  name: get_site_settings
+  author: r3-yamauchi
+  label:
+    en_US: Get Site Settings
+    ja_JP: サイト設定取得
+    zh_Hans: 获取站点设置
+  icon: icon.svg
+description:
+  human:
+    en_US: Retrieve WordPress site settings including title, description, URL, and other general settings.
+    ja_JP: WordPressサイトの設定（タイトル、説明、URL、その他の一般的な設定）を取得します。
+    zh_Hans: 检索WordPress站点设置，包括标题、描述、URL和其他常规设置。
+  llm: Retrieve WordPress site settings.
+parameters: []
+extra:
+  python:
+    source: tools/get_site_settings.py
+

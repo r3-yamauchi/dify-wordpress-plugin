@@ -1,0 +1,104 @@
+# where: wordpress/provider/provider.yaml
+# what: Registers WordPress REST API tools and declares required credentials.
+# why: Dify needs this metadata to expose the WordPress REST API tools.
+
+identity:
+  author: r3-yamauchi
+  name: wordpress
+  label:
+    en_US: WordPress REST API
+    ja_JP: WordPress REST API
+    zh_Hans: WordPress REST API
+  description:
+    en_US: Interact with WordPress sites through REST API (posts, pages, media, categories, tags, comments, users, and site information)
+    ja_JP: WordPress REST APIを利用して投稿、ページ、メディア、カテゴリー、タグ、コメント、ユーザー、サイト情報を操作するDifyツール
+    zh_Hans: 通过 WordPress REST API 操作文章、页面、媒体、分类、标签、评论、用户和站点信息
+  icon: icon.svg
+tools:
+  # Posts
+  - tools/get_posts.yaml
+  - tools/get_post_details.yaml
+  - tools/create_post.yaml
+  - tools/update_post.yaml
+  - tools/delete_post.yaml
+  # Pages
+  - tools/get_pages.yaml
+  - tools/create_page.yaml
+  - tools/update_page.yaml
+  - tools/delete_page.yaml
+  # Media
+  - tools/get_media.yaml
+  - tools/upload_media.yaml
+  - tools/update_media.yaml
+  - tools/delete_media.yaml
+  # Categories
+  - tools/get_categories.yaml
+  - tools/create_category.yaml
+  - tools/update_category.yaml
+  - tools/delete_category.yaml
+  # Tags
+  - tools/get_tags.yaml
+  - tools/create_tag.yaml
+  - tools/update_tag.yaml
+  - tools/delete_tag.yaml
+  # Comments
+  - tools/get_comments.yaml
+  - tools/create_comment.yaml
+  - tools/update_comment.yaml
+  - tools/delete_comment.yaml
+  # Users
+  - tools/get_site_users.yaml
+  - tools/update_user.yaml
+  # Site Information
+  - tools/get_site_settings.yaml
+  - tools/get_site_statistics.yaml
+  - tools/get_plugins.yaml
+extra:
+  python:
+    source: provider/provider.py
+credentials_for_provider:
+  wordpress_url:
+    help:
+      en_US: WordPress site URL (e.g., https://example.com)
+      ja_JP: "WordPressサイトのURL（例: https://example.com）"
+      zh_Hans: "WordPress站点URL（例如：https://example.com）"
+    label:
+      en_US: WordPress Site URL
+      ja_JP: WordPressサイトURL
+      zh_Hans: WordPress站点URL
+    placeholder:
+      en_US: https://example.com
+      ja_JP: https://example.com
+      zh_Hans: https://example.com
+    required: true
+    type: text-input
+  username:
+    help:
+      en_US: WordPress username for authentication
+      ja_JP: 認証用のWordPressユーザー名
+      zh_Hans: 用于身份验证的WordPress用户名
+    label:
+      en_US: Username
+      ja_JP: ユーザー名
+      zh_Hans: 用户名
+    placeholder:
+      en_US: admin
+      ja_JP: admin
+      zh_Hans: admin
+    required: true
+    type: text-input
+  application_password:
+    help:
+      en_US: Application password generated from WordPress user profile
+      ja_JP: WordPressユーザープロフィールで生成したアプリケーションパスワード
+      zh_Hans: 从WordPress用户配置文件生成的应用程序密码
+    label:
+      en_US: Application Password
+      ja_JP: アプリケーションパスワード
+      zh_Hans: 应用程序密码
+    placeholder:
+      en_US: xxxx xxxx xxxx xxxx xxxx xxxx
+      ja_JP: xxxx xxxx xxxx xxxx xxxx xxxx
+      zh_Hans: xxxx xxxx xxxx xxxx xxxx xxxx
+    required: true
+    type: secret-input

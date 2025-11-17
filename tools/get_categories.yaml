@@ -1,0 +1,64 @@
+identity:
+  name: get_categories
+  author: r3-yamauchi
+  label:
+    en_US: Get Categories
+    ja_JP: カテゴリー取得
+    zh_Hans: 获取分类
+  icon: icon.svg
+description:
+  human:
+    en_US: Retrieve categories from WordPress site with optional filtering by search query.
+    ja_JP: WordPressサイトからカテゴリーを取得します。検索クエリでフィルタリング可能です。
+    zh_Hans: 从WordPress站点检索分类，可按搜索查询进行筛选。
+  llm: Retrieve categories from WordPress site.
+parameters:
+  - name: per_page
+    type: number
+    required: false
+    label:
+      en_US: Categories Per Page
+      ja_JP: 1ページあたりの件数
+      zh_Hans: 每页分类数
+    human_description:
+      en_US: "Number of categories to retrieve per page (default: 10, max: 100)."
+      ja_JP: "1ページあたりの取得件数（デフォルト: 10、最大: 100）。"
+      zh_Hans: "每页要检索的分类数（默认：10，最大：100）。"
+    llm_description: Number of categories per page (default 10, max 100).
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+      maximum: 100
+  - name: page
+    type: number
+    required: false
+    label:
+      en_US: Page Number
+      ja_JP: ページ番号
+      zh_Hans: 页码
+    human_description:
+      en_US: "Page number to retrieve (default: 1)."
+      ja_JP: "取得するページ番号（デフォルト: 1）。"
+      zh_Hans: "要检索的页码（默认：1）。"
+    llm_description: Page number (default 1).
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+  - name: search
+    type: string
+    required: false
+    label:
+      en_US: Search Query
+      ja_JP: 検索クエリ
+      zh_Hans: 搜索查询
+    human_description:
+      en_US: Search query to filter categories by name.
+      ja_JP: 名前でカテゴリーを検索するクエリ。
+      zh_Hans: 按名称筛选分类的搜索查询。
+    llm_description: Search query to filter categories.
+    form: llm
+extra:
+  python:
+    source: tools/get_categories.py
