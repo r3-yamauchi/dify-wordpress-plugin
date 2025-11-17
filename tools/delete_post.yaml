@@ -1,0 +1,52 @@
+identity:
+  name: delete_post
+  author: r3-yamauchi
+  label:
+    en_US: Delete Post
+    ja_JP: 投稿削除
+    zh_Hans: 删除文章
+  icon: icon.svg
+description:
+  human:
+    en_US: Delete a WordPress post. By default, posts are moved to trash. Set force=true to permanently delete.
+    ja_JP: WordPressの投稿を削除します。デフォルトではゴミ箱に移動します。force=trueで完全削除します。
+    zh_Hans: 删除WordPress文章。默认情况下，文章会被移至垃圾箱。设置force=true可永久删除。
+  llm: Delete a WordPress post.
+parameters:
+  - name: id
+    type: number
+    required: true
+    label:
+      en_US: Post ID
+      ja_JP: 投稿ID
+      zh_Hans: 文章ID
+    human_description:
+      en_US: ID of the post to delete (required).
+      ja_JP: 削除する投稿のID（必須）。
+      zh_Hans: 要删除的文章ID（必需）。
+    llm_description: Post ID to delete (required).
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+  - name: force
+    type: boolean
+    required: false
+    label:
+      en_US: Force Delete
+      ja_JP: 完全削除
+      zh_Hans: 强制删除
+    human_description:
+      en_US: If true, permanently delete the post. If false (default), move to trash.
+      ja_JP: trueの場合、完全削除します。false（デフォルト）の場合、ゴミ箱に移動します。
+      zh_Hans: 如果为true，则永久删除文章。如果为false（默认），则移至垃圾箱。
+    llm_description: Force permanent delete (default false, moves to trash).
+    form: llm
+    input_schema:
+      type: boolean
+extra:
+  python:
+    source: tools/delete_post.py
+
+
+

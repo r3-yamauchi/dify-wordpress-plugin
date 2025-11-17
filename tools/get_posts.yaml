@@ -1,0 +1,107 @@
+identity:
+  name: get_posts
+  author: r3-yamauchi
+  label:
+    en_US: Get Posts
+    ja_JP: 投稿取得
+    zh_Hans: 获取文章
+  icon: icon.svg
+description:
+  human:
+    en_US: Retrieve posts from WordPress site with optional filtering by status, search query, category IDs, and tag IDs.
+    ja_JP: WordPressサイトから投稿を取得します。ステータス、検索クエリ、カテゴリーID、タグIDでフィルタリング可能です。
+    zh_Hans: 从WordPress站点检索文章，可按状态、搜索查询、分类ID和标签ID进行筛选。
+  llm: Retrieve posts from WordPress site with optional filtering.
+parameters:
+  - name: per_page
+    type: number
+    required: false
+    label:
+      en_US: Posts Per Page
+      ja_JP: 1ページあたりの件数
+      zh_Hans: 每页文章数
+    human_description:
+      en_US: "Number of posts to retrieve per page (default: 10, max: 100)."
+      ja_JP: "1ページあたりの取得件数（デフォルト: 10、最大: 100）。"
+      zh_Hans: "每页要检索的文章数（默认：10，最大：100）。"
+    llm_description: Number of posts per page (default 10, max 100).
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+      maximum: 100
+  - name: page
+    type: number
+    required: false
+    label:
+      en_US: Page Number
+      ja_JP: ページ番号
+      zh_Hans: 页码
+    human_description:
+      en_US: "Page number to retrieve (default: 1)."
+      ja_JP: "取得するページ番号（デフォルト: 1）。"
+      zh_Hans: "要检索的页码（默认：1）。"
+    llm_description: Page number (default 1).
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+  - name: search
+    type: string
+    required: false
+    label:
+      en_US: Search Query
+      ja_JP: 検索クエリ
+      zh_Hans: 搜索查询
+    human_description:
+      en_US: Search query to filter posts by title and content.
+      ja_JP: タイトルと本文で投稿を検索するクエリ。
+      zh_Hans: 按标题和内容筛选文章的搜索查询。
+    llm_description: Search query to filter posts.
+    form: llm
+  - name: status
+    type: string
+    required: false
+    label:
+      en_US: Post Status
+      ja_JP: 投稿ステータス
+      zh_Hans: 文章状态
+    human_description:
+      en_US: Filter posts by status (publish, draft, pending, private, future, trash).
+      ja_JP: ステータスで投稿をフィルタリング（publish, draft, pending, private, future, trash）。
+      zh_Hans: 按状态筛选文章（publish、draft、pending、private、future、trash）。
+    llm_description: Filter posts by status.
+    form: llm
+    input_schema:
+      type: string
+      enum: [publish, draft, pending, private, future, trash]
+  - name: categories
+    type: string
+    required: false
+    label:
+      en_US: Category IDs
+      ja_JP: カテゴリーID
+      zh_Hans: 分类ID
+    human_description:
+      en_US: Filter posts by category IDs. Can be a single ID, comma-separated IDs, or an array of IDs.
+      ja_JP: カテゴリーIDで投稿をフィルタリング。単一のID、カンマ区切りのID、またはIDの配列を指定できます。
+      zh_Hans: 按分类ID筛选文章。可以是单个ID、逗号分隔的ID或ID数组。
+    llm_description: Filter posts by category IDs.
+    form: llm
+  - name: tags
+    type: string
+    required: false
+    label:
+      en_US: Tag IDs
+      ja_JP: タグID
+      zh_Hans: 标签ID
+    human_description:
+      en_US: Filter posts by tag IDs. Can be a single ID, comma-separated IDs, or an array of IDs.
+      ja_JP: タグIDで投稿をフィルタリング。単一のID、カンマ区切りのID、またはIDの配列を指定できます。
+      zh_Hans: 按标签ID筛选文章。可以是单个ID、逗号分隔的ID或ID数组。
+    llm_description: Filter posts by tag IDs.
+    form: llm
+extra:
+  python:
+    source: tools/get_posts.py
+

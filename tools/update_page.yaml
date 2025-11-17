@@ -1,0 +1,111 @@
+identity:
+  name: update_page
+  author: r3-yamauchi
+  label:
+    en_US: Update Page
+    ja_JP: ページ更新
+    zh_Hans: 更新页面
+  icon: icon.svg
+description:
+  human:
+    en_US: Update an existing WordPress page. You can update title, content, status, featured media, or parent page.
+    ja_JP: WordPressの既存のページを更新します。タイトル、本文、ステータス、アイキャッチ画像、親ページを更新できます。
+    zh_Hans: 更新WordPress中的现有页面。可以更新标题、内容、状态、特色媒体或父页面。
+  llm: Update an existing WordPress page.
+parameters:
+  - name: id
+    type: number
+    required: true
+    label:
+      en_US: Page ID
+      ja_JP: ページID
+      zh_Hans: 页面ID
+    human_description:
+      en_US: ID of the page to update (required).
+      ja_JP: 更新するページのID（必須）。
+      zh_Hans: 要更新的页面ID（必需）。
+    llm_description: Page ID to update (required).
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+  - name: title
+    type: string
+    required: false
+    label:
+      en_US: Title
+      ja_JP: タイトル
+      zh_Hans: 标题
+    human_description:
+      en_US: New page title (max 255 characters).
+      ja_JP: 新しいページタイトル（最大255文字）。
+      zh_Hans: 新页面标题（最多255个字符）。
+    llm_description: New page title.
+    form: llm
+  - name: content
+    type: string
+    required: false
+    label:
+      en_US: Content
+      ja_JP: 本文
+      zh_Hans: 内容
+    human_description:
+      en_US: New page content in HTML format.
+      ja_JP: HTML形式の新しいページ本文。
+      zh_Hans: HTML格式的新页面内容。
+    llm_description: New page content in HTML format.
+    form: llm
+  - name: status
+    type: string
+    required: false
+    label:
+      en_US: Status
+      ja_JP: ステータス
+      zh_Hans: 状态
+    human_description:
+      en_US: New page status (publish, draft, pending, private, future).
+      ja_JP: 新しいページステータス（publish, draft, pending, private, future）。
+      zh_Hans: 新页面状态（publish、draft、pending、private、future）。
+    llm_description: New page status.
+    form: llm
+    input_schema:
+      type: string
+      enum: [publish, draft, pending, private, future]
+  - name: featured_media
+    type: number
+    required: false
+    label:
+      en_US: Featured Media ID
+      ja_JP: アイキャッチ画像ID
+      zh_Hans: 特色媒体ID
+    human_description:
+      en_US: Featured media (image) ID to set as page thumbnail. Set to 0 to remove thumbnail.
+      ja_JP: アイキャッチ画像として設定するメディアID。0を指定すると削除されます。
+      zh_Hans: 设置为页面缩略图的特色媒体（图片）ID。设置为0可删除缩略图。
+    llm_description: Featured media ID for page thumbnail (0 to remove).
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 0
+  - name: parent
+    type: number
+    required: false
+    label:
+      en_US: Parent Page ID
+      ja_JP: 親ページID
+      zh_Hans: 父页面ID
+    human_description:
+      en_US: Parent page ID. Set to 0 to remove parent relationship.
+      ja_JP: 親ページID。0を指定すると親子関係を削除します。
+      zh_Hans: 父页面ID。设置为0可删除父子关系。
+    llm_description: Parent page ID (0 to remove parent).
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 0
+extra:
+  python:
+    source: tools/update_page.py
+
+
+

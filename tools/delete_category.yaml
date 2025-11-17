@@ -1,0 +1,47 @@
+identity:
+  name: delete_category
+  author: r3-yamauchi
+  label:
+    en_US: Delete Category
+    ja_JP: カテゴリー削除
+    zh_Hans: 删除分类
+  icon: icon.svg
+description:
+  human:
+    en_US: Delete a WordPress category. If force is false, the category will be moved to trash.
+    ja_JP: WordPressカテゴリーを削除します。forceがfalseの場合、カテゴリーはゴミ箱に移動されます。
+    zh_Hans: 删除WordPress分类。如果force为false，分类将被移至回收站。
+  llm: Delete a WordPress category.
+parameters:
+  - name: id
+    type: number
+    required: true
+    label:
+      en_US: Category ID
+      ja_JP: カテゴリーID
+      zh_Hans: 分类ID
+    human_description:
+      en_US: "The ID of the category to delete (required)."
+      ja_JP: "削除するカテゴリーのID（必須）。"
+      zh_Hans: "要删除的分类ID（必需）。"
+    llm_description: The ID of the category to delete.
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+  - name: force
+    type: boolean
+    required: false
+    label:
+      en_US: Force Delete
+      ja_JP: 完全削除
+      zh_Hans: 强制删除
+    human_description:
+      en_US: "If true, permanently delete. If false (default), move to trash."
+      ja_JP: "trueの場合、完全削除。false（デフォルト）の場合、ゴミ箱に移動。"
+      zh_Hans: "如果为true，则永久删除。如果为false（默认），则移至回收站。"
+    llm_description: If true, permanently delete. If false, move to trash.
+    form: llm
+extra:
+  python:
+    source: tools/delete_category.py

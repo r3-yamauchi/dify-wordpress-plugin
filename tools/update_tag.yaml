@@ -1,0 +1,73 @@
+identity:
+  name: update_tag
+  author: r3-yamauchi
+  label:
+    en_US: Update Tag
+    ja_JP: タグ更新
+    zh_Hans: 更新标签
+  icon: icon.svg
+description:
+  human:
+    en_US: Update an existing WordPress tag with new name, description, or slug.
+    ja_JP: 既存のWordPressタグを更新します。名前、説明、スラッグを変更できます。
+    zh_Hans: 更新现有WordPress标签的名称、描述或别名。
+  llm: Update an existing WordPress tag.
+parameters:
+  - name: id
+    type: number
+    required: true
+    label:
+      en_US: Tag ID
+      ja_JP: タグID
+      zh_Hans: 标签ID
+    human_description:
+      en_US: "The ID of the tag to update (required)."
+      ja_JP: "更新するタグのID（必須）。"
+      zh_Hans: "要更新的标签ID（必需）。"
+    llm_description: The ID of the tag to update.
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+  - name: name
+    type: string
+    required: false
+    label:
+      en_US: Tag Name
+      ja_JP: タグ名
+      zh_Hans: 标签名称
+    human_description:
+      en_US: New tag name.
+      ja_JP: 新しいタグ名。
+      zh_Hans: 新的标签名称。
+    llm_description: New tag name.
+    form: llm
+  - name: description
+    type: string
+    required: false
+    label:
+      en_US: Description
+      ja_JP: 説明
+      zh_Hans: 描述
+    human_description:
+      en_US: New tag description.
+      ja_JP: 新しいタグの説明。
+      zh_Hans: 新的标签描述。
+    llm_description: New tag description.
+    form: llm
+  - name: slug
+    type: string
+    required: false
+    label:
+      en_US: Slug
+      ja_JP: スラッグ
+      zh_Hans: 别名
+    human_description:
+      en_US: New tag slug (URL-friendly name).
+      ja_JP: 新しいタグのスラッグ（URLに適した名前）。
+      zh_Hans: 新的标签别名（URL友好的名称）。
+    llm_description: New tag slug.
+    form: llm
+extra:
+  python:
+    source: tools/update_tag.py

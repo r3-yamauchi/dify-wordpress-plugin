@@ -1,0 +1,47 @@
+identity:
+  name: delete_tag
+  author: r3-yamauchi
+  label:
+    en_US: Delete Tag
+    ja_JP: タグ削除
+    zh_Hans: 删除标签
+  icon: icon.svg
+description:
+  human:
+    en_US: Delete a WordPress tag. If force is false, the tag will be moved to trash.
+    ja_JP: WordPressタグを削除します。forceがfalseの場合、タグはゴミ箱に移動されます。
+    zh_Hans: 删除WordPress标签。如果force为false，标签将被移至回收站。
+  llm: Delete a WordPress tag.
+parameters:
+  - name: id
+    type: number
+    required: true
+    label:
+      en_US: Tag ID
+      ja_JP: タグID
+      zh_Hans: 标签ID
+    human_description:
+      en_US: "The ID of the tag to delete (required)."
+      ja_JP: "削除するタグのID（必須）。"
+      zh_Hans: "要删除的标签ID（必需）。"
+    llm_description: The ID of the tag to delete.
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+  - name: force
+    type: boolean
+    required: false
+    label:
+      en_US: Force Delete
+      ja_JP: 完全削除
+      zh_Hans: 强制删除
+    human_description:
+      en_US: "If true, permanently delete. If false (default), move to trash."
+      ja_JP: "trueの場合、完全削除。false（デフォルト）の場合、ゴミ箱に移動。"
+      zh_Hans: "如果为true，则永久删除。如果为false（默认），则移至回收站。"
+    llm_description: If true, permanently delete. If false, move to trash.
+    form: llm
+extra:
+  python:
+    source: tools/delete_tag.py

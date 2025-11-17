@@ -1,0 +1,52 @@
+identity:
+  name: delete_media
+  author: r3-yamauchi
+  label:
+    en_US: Delete Media
+    ja_JP: メディア削除
+    zh_Hans: 删除媒体
+  icon: icon.svg
+description:
+  human:
+    en_US: Delete a WordPress media file. By default, media files are moved to trash. Set force=true to permanently delete.
+    ja_JP: WordPressのメディアファイルを削除します。デフォルトではゴミ箱に移動します。force=trueで完全削除します。
+    zh_Hans: 删除WordPress媒体文件。默认情况下，媒体文件会被移至垃圾箱。设置force=true可永久删除。
+  llm: Delete a WordPress media file.
+parameters:
+  - name: id
+    type: number
+    required: true
+    label:
+      en_US: Media ID
+      ja_JP: メディアID
+      zh_Hans: 媒体ID
+    human_description:
+      en_US: ID of the media to delete (required).
+      ja_JP: 削除するメディアのID（必須）。
+      zh_Hans: 要删除的媒体ID（必需）。
+    llm_description: Media ID to delete (required).
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+  - name: force
+    type: boolean
+    required: false
+    label:
+      en_US: Force Delete
+      ja_JP: 完全削除
+      zh_Hans: 强制删除
+    human_description:
+      en_US: If true, permanently delete the media. If false (default), move to trash.
+      ja_JP: trueの場合、完全削除します。false（デフォルト）の場合、ゴミ箱に移動します。
+      zh_Hans: 如果为true，则永久删除媒体。如果为false（默认），则移至垃圾箱。
+    llm_description: Force permanent delete (default false, moves to trash).
+    form: llm
+    input_schema:
+      type: boolean
+extra:
+  python:
+    source: tools/delete_media.py
+
+
+

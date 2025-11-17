@@ -1,0 +1,19 @@
+identity:
+  name: get_site_statistics
+  author: r3-yamauchi
+  label:
+    en_US: Get Site Statistics
+    ja_JP: サイト統計取得
+    zh_Hans: 获取站点统计
+  icon: icon.svg
+description:
+  human:
+    en_US: "Retrieve WordPress site statistics including visitor data and performance metrics. Note: This may require WordPress.com specific API endpoints."
+    ja_JP: "WordPressサイトの統計情報（訪問者データやパフォーマンス指標など）を取得します。注意: WordPress.com専用のAPIが必要な可能性があります。"
+    zh_Hans: 检索WordPress站点统计信息，包括访问者数据和性能指标。注意：可能需要WordPress.com专用API端点。
+  llm: "Retrieve WordPress site statistics. Note: This may require WordPress.com specific API endpoints."
+parameters: []
+extra:
+  python:
+    source: tools/get_site_statistics.py
+
