@@ -1,0 +1,97 @@
+identity:
+  name: get_comments
+  author: r3-yamauchi
+  label:
+    en_US: Get Comments
+    ja_JP: コメント取得
+    zh_Hans: 获取评论
+  icon: icon.svg
+description:
+  human:
+    en_US: Retrieve comments from WordPress site with optional filtering by post ID, status, and search query.
+    ja_JP: WordPressサイトからコメントを取得します。投稿ID、ステータス、検索クエリでフィルタリング可能です。
+    zh_Hans: 从WordPress站点检索评论，可按文章ID、状态和搜索查询进行筛选。
+  llm: Retrieve comments from WordPress site.
+parameters:
+  - name: per_page
+    type: number
+    required: false
+    label:
+      en_US: Comments Per Page
+      ja_JP: 1ページあたりの件数
+      zh_Hans: 每页评论数
+    human_description:
+      en_US: "Number of comments to retrieve per page (default: 10, max: 100)."
+      ja_JP: "1ページあたりの取得件数（デフォルト: 10、最大: 100）。"
+      zh_Hans: "每页要检索的评论数（默认：10，最大：100）。"
+    llm_description: Number of comments per page (default 10, max 100).
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+      maximum: 100
+  - name: page
+    type: number
+    required: false
+    label:
+      en_US: Page Number
+      ja_JP: ページ番号
+      zh_Hans: 页码
+    human_description:
+      en_US: "Page number to retrieve (default: 1)."
+      ja_JP: "取得するページ番号（デフォルト: 1）。"
+      zh_Hans: "要检索的页码（默认：1）。"
+    llm_description: Page number (default 1).
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+  - name: search
+    type: string
+    required: false
+    label:
+      en_US: Search Query
+      ja_JP: 検索クエリ
+      zh_Hans: 搜索查询
+    human_description:
+      en_US: Search query to filter comments by content.
+      ja_JP: コメント内容でコメントを検索するクエリ。
+      zh_Hans: 按评论内容筛选评论的搜索查询。
+    llm_description: Search query to filter comments.
+    form: llm
+  - name: post_id
+    type: number
+    required: false
+    label:
+      en_US: Post ID
+      ja_JP: 投稿ID
+      zh_Hans: 文章ID
+    human_description:
+      en_US: Filter comments by post ID.
+      ja_JP: 投稿IDでコメントをフィルタリング。
+      zh_Hans: 按文章ID筛选评论。
+    llm_description: Filter comments by post ID.
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+  - name: status
+    type: string
+    required: false
+    label:
+      en_US: Comment Status
+      ja_JP: コメントステータス
+      zh_Hans: 评论状态
+    human_description:
+      en_US: Filter comments by status (approved, hold, spam, trash).
+      ja_JP: ステータスでコメントをフィルタリング（approved, hold, spam, trash）。
+      zh_Hans: 按状态筛选评论（approved、hold、spam、trash）。
+    llm_description: Filter comments by status.
+    form: llm
+    input_schema:
+      type: string
+      enum: [approved, hold, spam, trash]
+extra:
+  python:
+    source: tools/get_comments.py
+

@@ -1,0 +1,47 @@
+identity:
+  name: delete_comment
+  author: r3-yamauchi
+  label:
+    en_US: Delete Comment
+    ja_JP: コメント削除
+    zh_Hans: 删除评论
+  icon: icon.svg
+description:
+  human:
+    en_US: Delete a WordPress comment. If force is false, the comment will be moved to trash.
+    ja_JP: WordPressコメントを削除します。forceがfalseの場合、コメントはゴミ箱に移動されます。
+    zh_Hans: 删除WordPress评论。如果force为false，评论将被移至回收站。
+  llm: Delete a WordPress comment.
+parameters:
+  - name: id
+    type: number
+    required: true
+    label:
+      en_US: Comment ID
+      ja_JP: コメントID
+      zh_Hans: 评论ID
+    human_description:
+      en_US: "The ID of the comment to delete (required)."
+      ja_JP: "削除するコメントのID（必須）。"
+      zh_Hans: "要删除的评论ID（必需）。"
+    llm_description: The ID of the comment to delete.
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+  - name: force
+    type: boolean
+    required: false
+    label:
+      en_US: Force Delete
+      ja_JP: 完全削除
+      zh_Hans: 强制删除
+    human_description:
+      en_US: "If true, permanently delete. If false (default), move to trash."
+      ja_JP: "trueの場合、完全削除。false（デフォルト）の場合、ゴミ箱に移動。"
+      zh_Hans: "如果为true，则永久删除。如果为false（默认），则移至回收站。"
+    llm_description: If true, permanently delete. If false, move to trash.
+    form: llm
+extra:
+  python:
+    source: tools/delete_comment.py

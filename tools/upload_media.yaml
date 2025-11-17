@@ -1,0 +1,87 @@
+identity:
+  name: upload_media
+  author: r3-yamauchi
+  label:
+    en_US: Upload Media
+    ja_JP: メディアアップロード
+    zh_Hans: 上传媒体
+  icon: icon.svg
+description:
+  human:
+    en_US: Upload a media file (image, video, audio, etc.) to WordPress.
+    ja_JP: WordPressにメディアファイル（画像、動画、音声など）をアップロードします。
+    zh_Hans: 将媒体文件（图片、视频、音频等）上传到WordPress。
+  llm: Upload a media file to WordPress.
+parameters:
+  - name: file
+    type: files
+    required: true
+    label:
+      en_US: File
+      ja_JP: ファイル
+      zh_Hans: 文件
+    human_description:
+      en_US: Media file to upload (image, video, audio, document, etc.).
+      ja_JP: アップロードするメディアファイル（画像、動画、音声、文書など）。
+      zh_Hans: 要上传的媒体文件（图片、视频、音频、文档等）。
+    llm_description: Media file to upload.
+    form: form
+  - name: title
+    type: string
+    required: false
+    label:
+      en_US: Title
+      ja_JP: タイトル
+      zh_Hans: 标题
+    human_description:
+      en_US: Media title.
+      ja_JP: メディアのタイトル。
+      zh_Hans: 媒体标题。
+    llm_description: Media title.
+    form: llm
+  - name: caption
+    type: string
+    required: false
+    label:
+      en_US: Caption
+      ja_JP: キャプション
+      zh_Hans: 说明文字
+    human_description:
+      en_US: Media caption (displayed below the media).
+      ja_JP: メディアのキャプション（メディアの下に表示されます）。
+      zh_Hans: 媒体说明文字（显示在媒体下方）。
+    llm_description: Media caption.
+    form: llm
+  - name: alt_text
+    type: string
+    required: false
+    label:
+      en_US: Alt Text
+      ja_JP: 代替テキスト
+      zh_Hans: 替代文本
+    human_description:
+      en_US: Alternative text for the media (important for accessibility).
+      ja_JP: メディアの代替テキスト（アクセシビリティのために重要）。
+      zh_Hans: 媒体的替代文本（对可访问性很重要）。
+    llm_description: Alternative text for accessibility.
+    form: llm
+  - name: description
+    type: string
+    required: false
+    label:
+      en_US: Description
+      ja_JP: 説明
+      zh_Hans: 描述
+    human_description:
+      en_US: Media description.
+      ja_JP: メディアの説明。
+      zh_Hans: 媒体描述。
+    llm_description: Media description.
+    form: llm
+extra:
+  python:
+    source: tools/upload_media.py
+
+
+
+

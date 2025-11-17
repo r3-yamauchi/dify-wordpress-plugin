@@ -1,0 +1,89 @@
+identity:
+  name: update_category
+  author: r3-yamauchi
+  label:
+    en_US: Update Category
+    ja_JP: カテゴリー更新
+    zh_Hans: 更新分类
+  icon: icon.svg
+description:
+  human:
+    en_US: Update an existing WordPress category with new name, description, slug, or parent category.
+    ja_JP: 既存のWordPressカテゴリーを更新します。名前、説明、スラッグ、親カテゴリーを変更できます。
+    zh_Hans: 更新现有WordPress分类的名称、描述、别名或父分类。
+  llm: Update an existing WordPress category.
+parameters:
+  - name: id
+    type: number
+    required: true
+    label:
+      en_US: Category ID
+      ja_JP: カテゴリーID
+      zh_Hans: 分类ID
+    human_description:
+      en_US: "The ID of the category to update (required)."
+      ja_JP: "更新するカテゴリーのID（必須）。"
+      zh_Hans: "要更新的分类ID（必需）。"
+    llm_description: The ID of the category to update.
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+  - name: name
+    type: string
+    required: false
+    label:
+      en_US: Category Name
+      ja_JP: カテゴリー名
+      zh_Hans: 分类名称
+    human_description:
+      en_US: New category name.
+      ja_JP: 新しいカテゴリー名。
+      zh_Hans: 新的分类名称。
+    llm_description: New category name.
+    form: llm
+  - name: description
+    type: string
+    required: false
+    label:
+      en_US: Description
+      ja_JP: 説明
+      zh_Hans: 描述
+    human_description:
+      en_US: New category description.
+      ja_JP: 新しいカテゴリーの説明。
+      zh_Hans: 新的分类描述。
+    llm_description: New category description.
+    form: llm
+  - name: slug
+    type: string
+    required: false
+    label:
+      en_US: Slug
+      ja_JP: スラッグ
+      zh_Hans: 别名
+    human_description:
+      en_US: New category slug (URL-friendly name).
+      ja_JP: 新しいカテゴリーのスラッグ（URLに適した名前）。
+      zh_Hans: 新的分类别名（URL友好的名称）。
+    llm_description: New category slug.
+    form: llm
+  - name: parent
+    type: number
+    required: false
+    label:
+      en_US: Parent Category ID
+      ja_JP: 親カテゴリーID
+      zh_Hans: 父分类ID
+    human_description:
+      en_US: New parent category ID (set to 0 to remove parent relationship).
+      ja_JP: 新しい親カテゴリーID（0を指定すると親子関係を削除）。
+      zh_Hans: 新的父分类ID（设置为0可删除父子关系）。
+    llm_description: New parent category ID.
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 0
+extra:
+  python:
+    source: tools/update_category.py
