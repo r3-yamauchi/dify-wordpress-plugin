@@ -1,0 +1,35 @@
+version: 0.0.1
+type: plugin
+author: r3-yamauchi
+name: wordpress
+label:
+  en_US: WordPress REST API
+  ja_JP: WordPress REST API
+  zh_Hans: WordPress REST API
+description:
+  en_US: Interact with WordPress sites through REST API (posts, pages, media)
+  ja_JP: WordPress REST APIを利用して投稿、ページ、メディアを操作します
+  zh_Hans: 通过 WordPress REST API 操作文章、页面和媒体
+icon: icon.svg
+resource:
+  memory: 268435456
+  permission:
+    tool:
+      enabled: true
+plugins:
+  tools:
+    - provider/provider.yaml
+meta:
+  version: 0.0.1
+  arch:
+    - amd64
+    - arm64
+  runner:
+    language: python
+    version: "3.12"
+    entrypoint: main
+  minimum_dify_version: 1.0.0
+created_at: 2025-11-13T00:00:00.000000000+09:00
+privacy: PRIVACY.md
+repo: https://github.com/r3-yamauchi/dify-wordpress-plugin
+verified: false

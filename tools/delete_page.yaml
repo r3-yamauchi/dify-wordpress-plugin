@@ -1,0 +1,52 @@
+identity:
+  name: delete_page
+  author: r3-yamauchi
+  label:
+    en_US: Delete Page
+    ja_JP: ページ削除
+    zh_Hans: 删除页面
+  icon: icon.svg
+description:
+  human:
+    en_US: Delete a WordPress page. By default, pages are moved to trash. Set force=true to permanently delete.
+    ja_JP: WordPressのページを削除します。デフォルトではゴミ箱に移動します。force=trueで完全削除します。
+    zh_Hans: 删除WordPress页面。默认情况下，页面会被移至垃圾箱。设置force=true可永久删除。
+  llm: Delete a WordPress page.
+parameters:
+  - name: id
+    type: number
+    required: true
+    label:
+      en_US: Page ID
+      ja_JP: ページID
+      zh_Hans: 页面ID
+    human_description:
+      en_US: ID of the page to delete (required).
+      ja_JP: 削除するページのID（必須）。
+      zh_Hans: 要删除的页面ID（必需）。
+    llm_description: Page ID to delete (required).
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+  - name: force
+    type: boolean
+    required: false
+    label:
+      en_US: Force Delete
+      ja_JP: 完全削除
+      zh_Hans: 强制删除
+    human_description:
+      en_US: If true, permanently delete the page. If false (default), move to trash.
+      ja_JP: trueの場合、完全削除します。false（デフォルト）の場合、ゴミ箱に移動します。
+      zh_Hans: 如果为true，则永久删除页面。如果为false（默认），则移至垃圾箱。
+    llm_description: Force permanent delete (default false, moves to trash).
+    form: llm
+    input_schema:
+      type: boolean
+extra:
+  python:
+    source: tools/delete_page.py
+
+
+

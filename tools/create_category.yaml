@@ -1,0 +1,73 @@
+identity:
+  name: create_category
+  author: r3-yamauchi
+  label:
+    en_US: Create Category
+    ja_JP: カテゴリー作成
+    zh_Hans: 创建分类
+  icon: icon.svg
+description:
+  human:
+    en_US: Create a new category in WordPress with name and optional description, slug, and parent category.
+    ja_JP: WordPressに新しいカテゴリーを作成します。名前、オプションで説明、スラッグ、親カテゴリーを指定できます。
+    zh_Hans: 在WordPress中创建新分类，包含名称和可选的描述、别名和父分类。
+  llm: Create a new category in WordPress.
+parameters:
+  - name: name
+    type: string
+    required: true
+    label:
+      en_US: Category Name
+      ja_JP: カテゴリー名
+      zh_Hans: 分类名称
+    human_description:
+      en_US: Category name (required).
+      ja_JP: カテゴリー名（必須）。
+      zh_Hans: 分类名称（必需）。
+    llm_description: Category name (required).
+    form: llm
+  - name: description
+    type: string
+    required: false
+    label:
+      en_US: Description
+      ja_JP: 説明
+      zh_Hans: 描述
+    human_description:
+      en_US: Category description.
+      ja_JP: カテゴリーの説明。
+      zh_Hans: 分类描述。
+    llm_description: Category description.
+    form: llm
+  - name: slug
+    type: string
+    required: false
+    label:
+      en_US: Slug
+      ja_JP: スラッグ
+      zh_Hans: 别名
+    human_description:
+      en_US: Category slug (URL-friendly name). If not provided, WordPress will generate one from the name.
+      ja_JP: カテゴリーのスラッグ（URLに適した名前）。指定しない場合、WordPressが名前から自動生成します。
+      zh_Hans: 分类别名（URL友好的名称）。如果未提供，WordPress将从名称自动生成。
+    llm_description: Category slug.
+    form: llm
+  - name: parent
+    type: number
+    required: false
+    label:
+      en_US: Parent Category ID
+      ja_JP: 親カテゴリーID
+      zh_Hans: 父分类ID
+    human_description:
+      en_US: Parent category ID to create a subcategory.
+      ja_JP: サブカテゴリーを作成するための親カテゴリーID。
+      zh_Hans: 创建子分类的父分类ID。
+    llm_description: Parent category ID for subcategory.
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+extra:
+  python:
+    source: tools/create_category.py

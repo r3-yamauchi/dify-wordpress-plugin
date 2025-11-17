@@ -1,0 +1,78 @@
+identity:
+  name: get_site_users
+  author: r3-yamauchi
+  label:
+    en_US: Get Site Users
+    ja_JP: サイトユーザー取得
+    zh_Hans: 获取站点用户
+  icon: icon.svg
+description:
+  human:
+    en_US: Retrieve users from WordPress site with optional filtering by role and search query.
+    ja_JP: WordPressサイトからユーザーを取得します。ロールや検索クエリでフィルタリング可能です。
+    zh_Hans: 从WordPress站点检索用户，可按角色和搜索查询进行筛选。
+  llm: Retrieve users from WordPress site.
+parameters:
+  - name: per_page
+    type: number
+    required: false
+    label:
+      en_US: Users Per Page
+      ja_JP: 1ページあたりの件数
+      zh_Hans: 每页用户数
+    human_description:
+      en_US: "Number of users to retrieve per page (default: 10, max: 100)."
+      ja_JP: "1ページあたりの取得件数（デフォルト: 10、最大: 100）。"
+      zh_Hans: "每页要检索的用户数（默认：10，最大：100）。"
+    llm_description: Number of users per page (default 10, max 100).
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+      maximum: 100
+  - name: page
+    type: number
+    required: false
+    label:
+      en_US: Page Number
+      ja_JP: ページ番号
+      zh_Hans: 页码
+    human_description:
+      en_US: "Page number to retrieve (default: 1)."
+      ja_JP: "取得するページ番号（デフォルト: 1）。"
+      zh_Hans: "要检索的页码（默认：1）。"
+    llm_description: Page number (default 1).
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+  - name: search
+    type: string
+    required: false
+    label:
+      en_US: Search Query
+      ja_JP: 検索クエリ
+      zh_Hans: 搜索查询
+    human_description:
+      en_US: Search query to filter users by name, email, or username.
+      ja_JP: 名前、メールアドレス、ユーザー名でユーザーを検索するクエリ。
+      zh_Hans: 按姓名、电子邮件或用户名筛选用户的搜索查询。
+    llm_description: Search query to filter users.
+    form: llm
+  - name: roles
+    type: string
+    required: false
+    label:
+      en_US: User Roles
+      ja_JP: ユーザーロール
+      zh_Hans: 用户角色
+    human_description:
+      en_US: Filter users by role (e.g., "administrator", "editor", "author"). Multiple roles can be specified as comma-separated values.
+      ja_JP: "ロールでユーザーをフィルタリング（例: \"administrator\", \"editor\", \"author\"）。複数のロールはカンマ区切りで指定可能。"
+      zh_Hans: 按角色筛选用户（例如："administrator"、"editor"、"author"）。可以指定多个角色，用逗号分隔。
+    llm_description: Filter users by role.
+    form: llm
+extra:
+  python:
+    source: tools/get_site_users.py
+

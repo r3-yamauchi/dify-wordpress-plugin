@@ -1,0 +1,83 @@
+identity:
+  name: get_pages
+  author: r3-yamauchi
+  label:
+    en_US: Get Pages
+    ja_JP: ページ取得
+    zh_Hans: 获取页面
+  icon: icon.svg
+description:
+  human:
+    en_US: Retrieve pages from WordPress site with optional filtering by status and search query.
+    ja_JP: WordPressサイトからページを取得します。ステータスや検索クエリでフィルタリング可能です。
+    zh_Hans: 从WordPress站点检索页面，可按状态和搜索查询进行筛选。
+  llm: Retrieve pages from WordPress site.
+parameters:
+  - name: per_page
+    type: number
+    required: false
+    label:
+      en_US: Pages Per Page
+      ja_JP: 1ページあたりの件数
+      zh_Hans: 每页页面数
+    human_description:
+      en_US: "Number of pages to retrieve per page (default: 10, max: 100)."
+      ja_JP: "1ページあたりの取得件数（デフォルト: 10、最大: 100）。"
+      zh_Hans: "每页要检索的页面数（默认：10，最大：100）。"
+    llm_description: Number of pages per page (default 10, max 100).
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+      maximum: 100
+  - name: page
+    type: number
+    required: false
+    label:
+      en_US: Page Number
+      ja_JP: ページ番号
+      zh_Hans: 页码
+    human_description:
+      en_US: "Page number to retrieve (default: 1)."
+      ja_JP: "取得するページ番号（デフォルト: 1）。"
+      zh_Hans: "要检索的页码（默认：1）。"
+    llm_description: Page number (default 1).
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+  - name: search
+    type: string
+    required: false
+    label:
+      en_US: Search Query
+      ja_JP: 検索クエリ
+      zh_Hans: 搜索查询
+    human_description:
+      en_US: Search query to filter pages by title and content.
+      ja_JP: タイトルと本文でページを検索するクエリ。
+      zh_Hans: 按标题和内容筛选页面的搜索查询。
+    llm_description: Search query to filter pages.
+    form: llm
+  - name: status
+    type: string
+    required: false
+    label:
+      en_US: Page Status
+      ja_JP: ページステータス
+      zh_Hans: 页面状态
+    human_description:
+      en_US: Filter pages by status (publish, draft, pending, private, future, trash).
+      ja_JP: ステータスでページをフィルタリング（publish, draft, pending, private, future, trash）。
+      zh_Hans: 按状态筛选页面（publish、draft、pending、private、future、trash）。
+    llm_description: Filter pages by status.
+    form: llm
+    input_schema:
+      type: string
+      enum: [publish, draft, pending, private, future, trash]
+extra:
+  python:
+    source: tools/get_pages.py
+
+
+

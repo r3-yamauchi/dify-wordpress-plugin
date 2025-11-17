@@ -1,0 +1,63 @@
+identity:
+  name: update_comment
+  author: r3-yamauchi
+  label:
+    en_US: Update Comment
+    ja_JP: コメント更新
+    zh_Hans: 更新评论
+  icon: icon.svg
+description:
+  human:
+    en_US: Update an existing WordPress comment with new content or status.
+    ja_JP: 既存のWordPressコメントを更新します。内容やステータスを変更できます。
+    zh_Hans: 更新现有WordPress评论的内容或状态。
+  llm: Update an existing WordPress comment.
+parameters:
+  - name: id
+    type: number
+    required: true
+    label:
+      en_US: Comment ID
+      ja_JP: コメントID
+      zh_Hans: 评论ID
+    human_description:
+      en_US: "The ID of the comment to update (required)."
+      ja_JP: "更新するコメントのID（必須）。"
+      zh_Hans: "要更新的评论ID（必需）。"
+    llm_description: The ID of the comment to update.
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+  - name: content
+    type: string
+    required: false
+    label:
+      en_US: Comment Content
+      ja_JP: コメント内容
+      zh_Hans: 评论内容
+    human_description:
+      en_US: New comment content.
+      ja_JP: 新しいコメント内容。
+      zh_Hans: 新的评论内容。
+    llm_description: New comment content.
+    form: llm
+  - name: status
+    type: string
+    required: false
+    label:
+      en_US: Comment Status
+      ja_JP: コメントステータス
+      zh_Hans: 评论状态
+    human_description:
+      en_US: New comment status (approved, hold, spam, trash).
+      ja_JP: 新しいコメントステータス（approved, hold, spam, trash）。
+      zh_Hans: 新的评论状态（approved、hold、spam、trash）。
+    llm_description: New comment status.
+    form: llm
+    input_schema:
+      type: string
+      enum: [approved, hold, spam, trash]
+extra:
+  python:
+    source: tools/update_comment.py

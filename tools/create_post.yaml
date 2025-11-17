@@ -1,0 +1,105 @@
+identity:
+  name: create_post
+  author: r3-yamauchi
+  label:
+    en_US: Create Post
+    ja_JP: 投稿作成
+    zh_Hans: 创建文章
+  icon: icon.svg
+description:
+  human:
+    en_US: Create a new post in WordPress with title, content, and optional status.
+    ja_JP: WordPressに新しい投稿を作成します。タイトル、本文、オプションでステータスを指定できます。
+    zh_Hans: 在WordPress中创建新文章，包含标题、内容和可选状态。
+  llm: Create a new post in WordPress.
+parameters:
+  - name: title
+    type: string
+    required: true
+    label:
+      en_US: Title
+      ja_JP: タイトル
+      zh_Hans: 标题
+    human_description:
+      en_US: Post title (required, max 255 characters).
+      ja_JP: 投稿タイトル（必須、最大255文字）。
+      zh_Hans: 文章标题（必需，最多255个字符）。
+    llm_description: Post title (required).
+    form: llm
+  - name: content
+    type: string
+    required: true
+    label:
+      en_US: Content
+      ja_JP: 本文
+      zh_Hans: 内容
+    human_description:
+      en_US: Post content in HTML format.
+      ja_JP: HTML形式の投稿本文。
+      zh_Hans: HTML格式的文章内容。
+    llm_description: Post content in HTML format.
+    form: llm
+  - name: status
+    type: string
+    required: false
+    label:
+      en_US: Status
+      ja_JP: ステータス
+      zh_Hans: 状态
+    human_description:
+      en_US: Post status (publish, draft, pending, private, future). Default is draft.
+      ja_JP: 投稿ステータス（publish, draft, pending, private, future）。デフォルトはdraft。
+      zh_Hans: 文章状态（publish、draft、pending、private、future）。默认为draft。
+    llm_description: Post status (default draft).
+    form: llm
+    input_schema:
+      type: string
+      enum: [publish, draft, pending, private, future]
+  - name: featured_media
+    type: number
+    required: false
+    label:
+      en_US: Featured Media ID
+      ja_JP: アイキャッチ画像ID
+      zh_Hans: 特色媒体ID
+    human_description:
+      en_US: Featured media (image) ID to set as post thumbnail.
+      ja_JP: アイキャッチ画像として設定するメディアID。
+      zh_Hans: 设置为文章缩略图的特色媒体（图片）ID。
+    llm_description: Featured media ID for post thumbnail.
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+  - name: categories
+    type: string
+    required: false
+    label:
+      en_US: Category IDs
+      ja_JP: カテゴリーID
+      zh_Hans: 分类ID
+    human_description:
+      en_US: Category IDs to assign to the post. Can be a single ID, comma-separated IDs, or an array of IDs.
+      ja_JP: 投稿に割り当てるカテゴリーID。単一のID、カンマ区切りのID、またはIDの配列を指定できます。
+      zh_Hans: 要分配给文章的分类ID。可以是单个ID、逗号分隔的ID或ID数组。
+    llm_description: Category IDs to assign to the post.
+    form: llm
+  - name: tags
+    type: string
+    required: false
+    label:
+      en_US: Tag IDs
+      ja_JP: タグID
+      zh_Hans: 标签ID
+    human_description:
+      en_US: Tag IDs to assign to the post. Can be a single ID, comma-separated IDs, or an array of IDs.
+      ja_JP: 投稿に割り当てるタグID。単一のID、カンマ区切りのID、またはIDの配列を指定できます。
+      zh_Hans: 要分配给文章的标签ID。可以是单个ID、逗号分隔的ID或ID数组。
+    llm_description: Tag IDs to assign to the post.
+    form: llm
+extra:
+  python:
+    source: tools/create_post.py
+
+
+

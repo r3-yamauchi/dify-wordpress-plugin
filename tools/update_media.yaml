@@ -1,0 +1,89 @@
+identity:
+  name: update_media
+  author: r3-yamauchi
+  label:
+    en_US: Update Media
+    ja_JP: メディア更新
+    zh_Hans: 更新媒体
+  icon: icon.svg
+description:
+  human:
+    en_US: Update metadata of an existing WordPress media file (title, caption, alt text, description).
+    ja_JP: WordPressの既存のメディアファイルのメタデータ（タイトル、キャプション、代替テキスト、説明）を更新します。
+    zh_Hans: 更新WordPress中现有媒体文件的元数据（标题、说明文字、替代文本、描述）。
+  llm: Update metadata of an existing WordPress media file.
+parameters:
+  - name: id
+    type: number
+    required: true
+    label:
+      en_US: Media ID
+      ja_JP: メディアID
+      zh_Hans: 媒体ID
+    human_description:
+      en_US: ID of the media to update (required).
+      ja_JP: 更新するメディアのID（必須）。
+      zh_Hans: 要更新的媒体ID（必需）。
+    llm_description: Media ID to update (required).
+    form: llm
+    input_schema:
+      type: integer
+      minimum: 1
+  - name: title
+    type: string
+    required: false
+    label:
+      en_US: Title
+      ja_JP: タイトル
+      zh_Hans: 标题
+    human_description:
+      en_US: New media title.
+      ja_JP: 新しいメディアのタイトル。
+      zh_Hans: 新媒体标题。
+    llm_description: New media title.
+    form: llm
+  - name: caption
+    type: string
+    required: false
+    label:
+      en_US: Caption
+      ja_JP: キャプション
+      zh_Hans: 说明文字
+    human_description:
+      en_US: New media caption.
+      ja_JP: 新しいメディアのキャプション。
+      zh_Hans: 新媒体说明文字。
+    llm_description: New media caption.
+    form: llm
+  - name: alt_text
+    type: string
+    required: false
+    label:
+      en_US: Alt Text
+      ja_JP: 代替テキスト
+      zh_Hans: 替代文本
+    human_description:
+      en_US: New alternative text for the media.
+      ja_JP: 新しいメディアの代替テキスト。
+      zh_Hans: 新媒体替代文本。
+    llm_description: New alternative text.
+    form: llm
+  - name: description
+    type: string
+    required: false
+    label:
+      en_US: Description
+      ja_JP: 説明
+      zh_Hans: 描述
+    human_description:
+      en_US: New media description.
+      ja_JP: 新しいメディアの説明。
+      zh_Hans: 新媒体描述。
+    llm_description: New media description.
+    form: llm
+extra:
+  python:
+    source: tools/update_media.py
+
+
+
